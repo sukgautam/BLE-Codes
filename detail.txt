@@ -1,0 +1,14 @@
+Temp sensor working properly
+Acc sensor working properly
+Advertising logic is working properly (152 packets two for battery and temperature 150 for accelerometer)
+pin high low logic working properly
+button login is working properly but now system will be in sleep mode unless button is pressed not in power off mode.
+
+Some findings:-
+1. we have done 3 changes in advertising.c file to configure the sensornode in non-connectable and non-scannable mode
+on line no 321,504,592. Along with that functions  gap_params_init();  gatt_init();  conn_params_init(); are commented
+in main function.
+2. For sending only one packet we have added this "p_advertising->adv_params.max_adv_evts=1;" in advertising.c file
+on line 593 and 508. on doing so even by changing APP_ADV_DURATION every time 3packets are being advertised, checked 
+it on wireshark as in one advertising event packet is sent on 3 channels.                
+  
